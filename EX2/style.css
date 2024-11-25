@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+}
+div{
+    background-color: antiquewhite;
+    color: black;
+    border-color: brown;
+    border-width: 8px;
+    border-style:solid;
+    text-align: center;
+    padding: 20px;
+}
+.image{
+    margin-top: 15px;
+    margin-left: 30%;
+    background-color:antiquewhite;
+    color:black;
+    border-color:brown;
+    border-width: 5px;
+    border-style:solid;
+    width: 510px;
+    height: 280px;
+    text-align: center;
+
+}
