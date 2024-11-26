@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodie Spot Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #ff5722;
+            margin: 20px 0;
+            font-size: 2.5em;
+        }
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #2e2e2e;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        th, td {
+            text-align: center;
+            padding: 15px;
+            border-bottom: 1px solid #3e3e3e;
+        }
+        th {
+            background-color: #ff5722;
+            color: #1a1a1a;
+            font-weight: bold;
+        }
+        tr:hover {
+            background-color: #444;
+        }
+        .cuisine-header {
+            background-color: #ff5722;
+            color: #1a1a1a;
+            font-weight: bold;
+            text-align: left;
+            padding: 10px 15px;
+            font-size: 1.2em;
+        }
+        input[type="number"] {
+            width: 60px;
+            padding: 5px;
+            border: 1px solid #888;
+            border-radius: 4px;
+            color: #1a1a1a;
+        }
+        input[type="checkbox"] {
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+        button {
+            width: 200px;
+            margin: 20px auto;
+            display: block;
+            background-color: #ff5722;
+            color: #1a1a1a;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #e64a19;
+        }
+    </style>
+</head>
+<body>
+    <h1>Foodie Spot Menu</h1>
+    <form action="CalculateBillServlet" method="post">
+        <table>
+            <thead>
+                <tr>
+                    <th>Select</th>
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Cuisine sections -->
+                <tr class="cuisine-header">
+                    <td colspan="4">Italian Cuisines</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="item" value="Pizza"></td>
+                    <td>Pizza</td>
+                    <td>₹100</td>
+                    <td><input type="number" name="pizza_qty" min="0" value="0"></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="item" value="Spaghetti"></td>
+                    <td>Spaghetti</td>
+                    <td>₹150</td>
+                    <td><input type="number" name="spaghetti_qty" min="0" value="0"></td>
+                </tr>
+                <!-- Add other cuisines similarly -->
+                <tr>
+                    <td colspan="4">
+                        <button type="submit">Calculate Bill</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</body>
+</html>
