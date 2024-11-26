@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+    <item>
+        <name>Margherita Pizza</name>
+        <description>Delicious pizza with tomato, cheese, and basil.</description>
+        <price>1200</price>
+    </item>
+    <item>
+        <name>Chicken Biryani</name>
+        <description>Spicy and flavorful biryani with chicken pieces.</description>
+        <price>800</price>
+    </item>
+    <item>
+        <name>Caesar Salad</name>
+        <description>Fresh salad with crisp lettuce, creamy dressing, and croutons.</description>
+        <price>350</price>
+    </item>
+    <!-- Add more items as needed -->
+</menu>
+
