@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Delivery Feedback</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1c1c1c;
+            color: #f9f9f9;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        h1 {
+            color: #ff9800;
+            text-shadow: 0 0 15px #ff6f00, 0 0 30px #ff5722;
+            margin-bottom: 20px;
+            font-size: 3rem;
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        h1:hover {
+            transform: scale(1.1);
+            text-shadow: 0 0 30px #ff9800, 0 0 60px #ff6f00;
+        }
+
+        .form-container {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0px 0px 30px rgba(255, 87, 34, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 0px 50px rgba(255, 87, 34, 0.5);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #ffcc80;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            background-color: #262626;
+            border: 1px solid #ff9800;
+            border-radius: 8px;
+            font-size: 16px;
+            color: #fff;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #ff5722;
+            box-shadow: 0 0 10px rgba(255, 87, 34, 0.5);
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .btn-custom {
+            background-color: #ff5722;
+            color: #fff;
+            border: none;
+            padding: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            width: 100%;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: #ff784e;
+            transform: translateY(-5px);
+        }
+
+        #htext {
+            font-size: 22px;
+            color: #ffcc80;
+            cursor: pointer;
+            margin: 20px 0;
+            text-align: center;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        #htext:hover {
+            color: #ff9800;
+            text-shadow: 0 0 20px #ff5722;
+        }
+
+        #container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        #time {
+            background-color: #ff9800;
+            color: #1c1c1c;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        #time:hover {
+            background-color: #ffcc80;
+            transform: scale(1.1);
+        }
+
+        #t {
+            font-size: 1.8rem;
+            color: #ffcc80;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+
+        .con {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0px 0px 20px rgba(255, 87, 34, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .con:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 0px 40px rgba(255, 87, 34, 0.5);
+        }
+
+        .img {
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .img:hover {
+            transform: scale(1.1);
+        }
+
+        .te {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            text-shadow: 0 0 10px #000;
+            opacity: 0;
+            transition: opacity 0.3s ease, top 0.3s ease;
+        }
+
+        .con:hover .te {
+            top: 40%;
+            opacity: 1;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.addEventListener('click', function() {
+                const darkTheme = document.body.style.backgroundColor === 'rgb(28, 28, 28)';
+                document.body.style.backgroundColor = darkTheme ? '#262626' : '#1c1c1c';
+            });
+
+            let interval;
+            document.getElementById('time').addEventListener('click', function() {
+                clearInterval(interval);
+                updateTime();
+                interval = setInterval(updateTime, 1000);
+            });
+
+            function updateTime() {
+                const now = new Date();
+                const timeString = now.toLocaleTimeString();
+                document.getElementById('t').textContent = timeString;
+            }
+
+            const hoverText = document.getElementById('htext');
+            hoverText.addEventListener('mouseenter', () => {
+                hoverText.textContent = 'Hungry? Let’s satisfy your cravings!';
+            });
+
+            hoverText.addEventListener('mouseleave', () => {
+                hoverText.textContent = 'Order Your Favorite Food!';
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Food Delivery Feedback</h1>
+
+    <div id="container">
+        <button id="time">Show Time</button>
+        <div id="t"></div>
+    </div>
+
+    <div class="form-container">
+        <form id="myForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="subject">Favorite Dish:</label>
+            <input type="text" id="subject" name="subject" placeholder="Enter your favorite dish" required>
+
+            <label for="message">Feedback:</label>
+            <textarea id="message" name="message" rows="5" placeholder="Share your experience" required></textarea>
+
+            <button type="submit" class="btn-custom">Submit Feedback</button>
+        </form>
+    </div>
+
+    <div id="htext">Hover Over Me!</div>
+
+    <div class="con">
+        <img src="th.jpeg" alt="Delicious Food" class="img">
+        <div class="te">Order Now!</div>
+    </div>
+</body>
+</html>
